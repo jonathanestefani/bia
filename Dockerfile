@@ -1,8 +1,7 @@
 FROM public.ecr.aws/docker/library/node:22-slim
-RUN npm install -g npm@11 --loglevel=error
 
 # Instalando curl
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y curl postgresql-client && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
 
@@ -18,11 +17,14 @@ RUN cd client && npm install --legacy-peer-deps --loglevel=error
 COPY . .
 
 # Build do front-end com Vite
-RUN cd client && VITE_API_URL=http://localhost:3001 npm run build
+RUN cd client && VITE_API_URL=http://bia-alb-2077049490.us-east-1.elb.amazonaws.com npm run build
 
 # Limpeza das dependências de desenvolvimento do client para reduzir tamanho
 RUN cd client && npm prune --production && rm -rf node_modules/.cache
 
+COPY entrypoint.sh ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh
+
 EXPOSE 8080
 
-CMD [ "npm", "start" ]
+CMD [ "./entrypoint.sh" ]
