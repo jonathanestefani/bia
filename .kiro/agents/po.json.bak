@@ -6,8 +6,8 @@
     "glob",
     "grep",
     "read",
-    "shell",
-    "write"
+    "write",
+    "execute_bash"
   ],
   "allowedTools": [
     "read",
@@ -63,11 +63,11 @@
         "effect": "allow"
       },
       {
-        "capability": "fs_read",
+        "capability": "fs_write",
         "effect": "allow"
       },
       {
-        "capability": "fs_write",
+        "capability": "fs_read",
         "effect": "allow"
       },
       {
