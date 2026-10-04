@@ -7,6 +7,13 @@ const AddTask = ({ onAdd }) => {
   const [importante, setImportante] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  // Converte data do formato ISO (YYYY-MM-DD) para formato brasileiro (DD/MM/YYYY)
+  const converterData = (dataISO) => {
+    if (!dataISO) return new Date().toLocaleDateString('pt-BR');
+    const [ano, mes, dia] = dataISO.split('-');
+    return `${dia}/${mes}/${ano}`;
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -17,7 +24,7 @@ const AddTask = ({ onAdd }) => {
 
     onAdd({ 
       titulo: titulo.trim(), 
-      dia_atividade: dia || new Date().toLocaleDateString('pt-BR'), 
+      dia_atividade: converterData(dia), 
       importante 
     });
 
@@ -41,8 +48,7 @@ const AddTask = ({ onAdd }) => {
       <div className="form-control">
         <label>Data/Prazo</label>
         <input
-          type="text"
-          placeholder="Quando?"
+          type="date"
           value={dia}
           onChange={(e) => setDia(e.target.value)}
         />
