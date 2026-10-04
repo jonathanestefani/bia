@@ -24,16 +24,16 @@ A solução deve:
 
 ## Critérios de aceitação
 
-- [ ] O campo "Data/Prazo" no formulário é renderizado como `<input type="date" />`
-- [ ] O date picker exibe um calendário visual ao ser clicado (comportamento nativo do navegador)
-- [ ] Quando o usuário seleciona uma data no calendário, o valor é armazenado no estado `dia`
-- [ ] Quando o usuário submete o formulário SEM selecionar data, o sistema usa a data atual no formato `DD/MM/YYYY` (comportamento existente mantido)
-- [ ] Quando o usuário submete o formulário COM data selecionada, o valor é convertido de `YYYY-MM-DD` para `DD/MM/YYYY` antes de chamar `onAdd()`
-- [ ] O backend recebe `dia_atividade` como string no formato `DD/MM/YYYY` (sem quebrar compatibilidade)
-- [ ] O campo mantém o estilo visual consistente com os demais campos do formulário (classe `form-control`)
-- [ ] A funcionalidade de criar tarefas continua funcionando corretamente
-- [ ] Tarefas criadas com o date picker são exibidas corretamente na lista de tarefas
-- [ ] Tarefas existentes no banco continuam sendo exibidas sem problemas
+- [x] O campo "Data/Prazo" no formulário é renderizado como `<input type="date" />`
+- [x] O date picker exibe um calendário visual ao ser clicado (comportamento nativo do navegador)
+- [x] Quando o usuário seleciona uma data no calendário, o valor é armazenado no estado `dia`
+- [x] Quando o usuário submete o formulário SEM selecionar data, o sistema usa a data atual no formato `DD/MM/YYYY` (comportamento existente mantido)
+- [x] Quando o usuário submete o formulário COM data selecionada, o valor é convertido de `YYYY-MM-DD` para `DD/MM/YYYY` antes de chamar `onAdd()`
+- [x] O backend recebe `dia_atividade` como string no formato `DD/MM/YYYY` (sem quebrar compatibilidade)
+- [x] O campo mantém o estilo visual consistente com os demais campos do formulário (classe `form-control`)
+- [x] A funcionalidade de criar tarefas continua funcionando corretamente
+- [x] Tarefas criadas com o date picker são exibidas corretamente na lista de tarefas
+- [x] Tarefas existentes no banco continuam sendo exibidas sem problemas
 
 ## Contexto técnico adicional
 
