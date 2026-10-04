@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { ThemeProvider } from "./contexts/ThemeContext.jsx";
 import { LogProvider, useLog } from "./contexts/LogContext.jsx";
 import Header from "./components/Header.jsx";
@@ -10,6 +10,8 @@ import About from "./components/About.jsx";
 import VersionPage from "./components/VersionPage.jsx";
 import DebugLogs from "./components/DebugLogs.jsx";
 import HistoricoVersoes from "./components/HistoricoVersoes.jsx";
+import Estatisticas from "./components/Estatisticas.jsx";
+import { FaChartBar } from "react-icons/fa";
 
 const apiUrl = import.meta.env.VITE_API_URL || "";
 
@@ -192,6 +194,11 @@ function AppContent() {
         </div>
       )}
       <HistoricoVersoes refreshTrigger={taskAddedAt} />
+      <div className="home-links">
+        <Link to="/estatisticas" className="home-link-estatisticas">
+          <FaChartBar /> Ver Estatísticas
+        </Link>
+      </div>
       <Modal
         isOpen={showConfirmModal}
         onClose={() => setShowConfirmModal(false)}
@@ -213,6 +220,7 @@ function AppContent() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<About />} />
             <Route path="/versao" element={<VersionPage />} />
+            <Route path="/estatisticas" element={<Estatisticas />} />
           </Routes>
           <Footer />
         </div>

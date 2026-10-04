@@ -110,5 +110,21 @@ module.exports = () => {
     }
   };
 
+  controller.getEstatisticas = async (req, res) => {
+    try {
+      const { Tarefas } = await initializeModels();
+
+      const total = await Tarefas.count();
+      const importante = await Tarefas.count({ where: { importante: true } });
+      const normal = await Tarefas.count({ where: { importante: false } });
+
+      res.send({ total, importante, normal });
+    } catch (err) {
+      res.status(500).send({
+        message: err.message || "Erro ao buscar estatísticas.",
+      });
+    }
+  };
+
   return controller;
 };
