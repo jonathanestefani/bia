@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 
+const converterData = (dataISO) => {
+  if (!dataISO) return new Date().toLocaleDateString('pt-BR');
+  const [ano, mes, dia] = dataISO.split('-');
+  return `${dia}/${mes}/${ano}`;
+};
+
 const AddTask = ({ onAdd }) => {
   const [titulo, setTitulo] = useState("");
   const [dia, setDia] = useState("");
@@ -17,7 +23,7 @@ const AddTask = ({ onAdd }) => {
 
     onAdd({ 
       titulo: titulo.trim(), 
-      dia_atividade: dia || new Date().toLocaleDateString('pt-BR'), 
+      dia_atividade: converterData(dia), 
       importante 
     });
 
@@ -41,8 +47,7 @@ const AddTask = ({ onAdd }) => {
       <div className="form-control">
         <label>Data/Prazo</label>
         <input
-          type="text"
-          placeholder="Quando?"
+          type="date"
           value={dia}
           onChange={(e) => setDia(e.target.value)}
         />
