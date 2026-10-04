@@ -2,6 +2,15 @@ module.exports = (app) => {
   const controllerFactory = require("../controllers/tarefas");
   const controller = controllerFactory();
 
+  app.route("/api/tarefas/estatisticas")
+    .get(async (req, res, next) => {
+      try {
+        await controller.getEstatisticas(req, res);
+      } catch (err) {
+        next(err);
+      }
+    });
+
   app.route("/api/tarefas")
     .get(async (req, res, next) => {
       try {
