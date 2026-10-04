@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 
+const converterData = (dataISO) => {
+  if (!dataISO) return new Date().toLocaleDateString('pt-BR');
+  const [ano, mes, dia] = dataISO.split('-');
+  return `${dia}/${mes}/${ano}`;
+};
+
 const AddTask = ({ onAdd }) => {
   const [titulo, setTitulo] = useState("");
   const [dia, setDia] = useState("");
   const [importante, setImportante] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
-  // Converte data do formato ISO (YYYY-MM-DD) para formato brasileiro (DD/MM/YYYY)
-  const converterData = (dataISO) => {
-    if (!dataISO) return new Date().toLocaleDateString('pt-BR');
-    const [ano, mes, dia] = dataISO.split('-');
-    return `${dia}/${mes}/${ano}`;
-  };
 
   const onSubmit = (e) => {
     e.preventDefault();
