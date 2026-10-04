@@ -149,7 +149,14 @@ docker compose exec server bash   # Acessar o container
 npm start                         # Iniciar servidor
 npm run start_db                  # Inicializar banco
 npm test                          # Executar testes
+
+# Git Worktrees (para trabalho paralelo com AI agents)
+./scripts/worktree-create.sh 007 feat-date-picker  # Criar worktree para task
+./scripts/worktree-list.sh                         # Listar worktrees ativas
+./scripts/worktree-remove.sh 007                   # Remover worktree após merge
 ```
+
+> **Trabalho Paralelo com Worktrees:** O projeto usa git worktrees para permitir que múltiplos agentes (ou desenvolvedores) trabalhem em tasks diferentes simultaneamente. Veja [.amazonq/docs/worktree-workflow.md](.amazonq/docs/worktree-workflow.md) para documentação completa.
 
 ---
 
