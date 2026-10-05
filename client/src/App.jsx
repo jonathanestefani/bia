@@ -10,6 +10,7 @@ import About from "./components/About.jsx";
 import VersionPage from "./components/VersionPage.jsx";
 import DebugLogs from "./components/DebugLogs.jsx";
 import HistoricoVersoes from "./components/HistoricoVersoes.jsx";
+import Modal from "./components/Modal.jsx";
 import Estatisticas from "./components/Estatisticas.jsx";
 import { FaChartBar } from "react-icons/fa";
 
@@ -151,6 +152,11 @@ function AppContent() {
       logApiError('POST', url, error);
       addLog('ERROR', 'Falha ao criar tarefa', error.message);
     }
+  };
+
+  //Remover todas as tarefas (TODO: implementar endpoint em massa)
+  const deleteAllTasks = async () => {
+    setShowConfirmModal(false);
   };
 
   //Remover tarefa
